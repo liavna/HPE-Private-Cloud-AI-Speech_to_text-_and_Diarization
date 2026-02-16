@@ -1,0 +1,8 @@
+streamlit
+openai
+pandas
+fastapi
+uvicorn
+python-multipart
+watchdog
+requests
