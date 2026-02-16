@@ -1,8 +1,8 @@
 replicaCount: 1
 
 image:
-  repository: my-registry/speech-ui
-  pullPolicy: IfNotPresent
+  repository: liavna/speech-ui
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
