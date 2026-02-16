@@ -52,6 +52,21 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
+# =============================================================================
+# Istio Sidecar
+# =============================================================================
+istioSidecar:
+  enabled: false
+
+# =============================================================================
+# Istio / EZUA
+# =============================================================================
+ezua:
+  enabled: true
+  virtualService:
+    endpoint: "voice-ui.${DOMAIN_NAME}" # You will likely set DOMAIN_NAME in CI/CD or hardcode here
+    istioGateway: "istio-system/ezaf-gateway"
+
 resources:
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little

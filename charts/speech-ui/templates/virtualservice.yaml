@@ -1,0 +1,23 @@
+{{- if .Values.ezua.enabled -}}
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ include "speech-ui.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "speech-ui.labels" . | nindent 4 }}
+spec:
+  hosts:
+  - {{ .Values.ezua.virtualService.endpoint | quote }}
+  gateways:
+  - {{ .Values.ezua.virtualService.istioGateway | quote }}
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: {{ include "speech-ui.fullname" . }}
+        port:
+          number: {{ .Values.service.port }}
+{{- end }}
