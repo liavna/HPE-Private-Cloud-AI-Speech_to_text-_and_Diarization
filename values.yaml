@@ -1,0 +1,54 @@
+# Voice Agent - Speech UI
+replicaCount: 1
+
+nameOverride: ""
+fullnameOverride: ""
+
+image:
+  repository: liavna/speech-ui
+  pullPolicy: Always
+  tag: "latest"
+
+service:
+  type: ClusterIP
+  port: 8501
+
+resources:
+  requests:
+    cpu: "1000m"
+    memory: "2048Mi"
+  limits:
+    cpu: "4000m"
+    memory: "4096Mi"
+
+ezua:
+  enabled: true
+  virtualService:
+    endpoint: "speech-ui.${DOMAIN_NAME}"
+    istioGateway: "istio-system/ezaf-gateway"
+
+serviceAccount:
+  create: false
+  name: ""
+  annotations: {}
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+podSecurityContext: {}
+securityContext: {}
+
+livenessProbe:
+  httpGet:
+    path: /_stcore/health
+    port: 8501
+  initialDelaySeconds: 30
+  periodSeconds: 10
+
+readinessProbe:
+  httpGet:
+    path: /_stcore/health
+    port: 8501
+  initialDelaySeconds: 10
+  periodSeconds: 10
