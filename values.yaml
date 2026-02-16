@@ -36,6 +36,9 @@ nodeSelector: {}
 tolerations: []
 affinity: {}
 
+podAnnotations: {}
+imagePullSecrets: []
+
 podSecurityContext: {}
 securityContext: {}
 
