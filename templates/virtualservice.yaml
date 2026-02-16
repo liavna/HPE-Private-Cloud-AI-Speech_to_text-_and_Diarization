@@ -2,9 +2,9 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: {{ include "voice-agent.fullname" . }}
+  name: {{ include "speech-diarization.fullname" . }}
   labels:
-    {{- include "voice-agent.labels" . | nindent 4 }}
+    {{- include "speech-diarization.labels" . | nindent 4 }}
 spec:
   hosts:
     - {{ .Values.ezua.virtualService.endpoint | quote }}
@@ -16,7 +16,7 @@ spec:
             prefix: /
       route:
         - destination:
-            host: {{ include "voice-agent.fullname" . }}
+            host: {{ include "speech-diarization.fullname" . }}
             port:
               number: {{ .Values.service.port }}
       timeout: 300s

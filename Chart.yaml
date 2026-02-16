@@ -1,18 +1,6 @@
 apiVersion: v2
-appVersion: 5.0.0
-description: Voice Agent - Natural Conversation with Whisper ASR + XTTS v2 TTS
-keywords:
-- voice-agent
-- whisper
-- xtts
-- tts
-- asr
-- multilingual
-- interrupt
-- vad
-- monitoring
-maintainers:
-- name: Liav
-name: voice-agent
+name: speech-diarization-ui
+description: A Streamlit-based Speech-to-Text and Diarization UI for HPE MLIS
 type: application
-version: 5.0.0
+version: 1.0.0
+appVersion: "1.0.0"

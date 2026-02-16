@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-NAMESPACE="voice-agent"
-RELEASE_NAME="voice-agent"
+NAMESPACE="speech-diarization"
+RELEASE_NAME="speech-diarization"
 TIMEOUT="15m0s"
 
 echo "Deploying ${RELEASE_NAME} to namespace ${NAMESPACE}..."

@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "voice-agent.fullname" . }}
+  name: {{ include "speech-diarization.fullname" . }}
   labels:
-    {{- include "voice-agent.labels" . | nindent 4 }}
+    {{- include "speech-diarization.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "voice-agent.selectorLabels" . | nindent 6 }}
+      {{- include "speech-diarization.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -16,13 +16,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "voice-agent.selectorLabels" . | nindent 8 }}
+        {{- include "speech-diarization.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "voice-agent.serviceAccountName" . }}
+      serviceAccountName: {{ include "speech-diarization.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:

@@ -1,8 +1,8 @@
-# Voice Agent - Speech UI
+# Speech Diarization UI v1.0.0
 replicaCount: 1
 
 nameOverride: ""
-fullnameOverride: ""
+fullnameOverride: "speech-diarization-ui"
 
 image:
   repository: liavna/speech-ui
