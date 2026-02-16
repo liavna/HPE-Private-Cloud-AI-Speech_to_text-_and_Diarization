@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: speech-ai-vs
+spec:
+  hosts:
+  - {{ .Values.ezua.ingressHost | quote }}
+  gateways:
+  - {{ .Values.ezua.gateway | quote }}
+  http:
+  - route:
+    - destination:
+        host: speech-ai-service
+        port:
+          number: {{ .Values.service.port }}

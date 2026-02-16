@@ -1,0 +1,10 @@
+apiVersion: v2
+name: speech-ai
+description: Speech.AI - STT, Diarization and Summary on HPE Private Cloud AI
+type: application
+
+# Chart Version
+version: 1.0.0
+
+# App Version
+appVersion: "1.0.0"

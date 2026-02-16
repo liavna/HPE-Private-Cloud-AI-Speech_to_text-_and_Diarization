@@ -1,0 +1,23 @@
+image:
+  repository: liavna/speech.ai
+  tag: latest
+  pullPolicy: Always
+
+service:
+  port: 8501
+
+ezua:
+  enabled: true
+  applicationName: "speech-ai"
+  ingressHost: "speech-ai.apps.hpe-pca.local"
+  gateway: "istio-system/ezaf-gateway"
+
+probes:
+  liveness:
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    failureThreshold: 5
+  readiness:
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    failureThreshold: 5
