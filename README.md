@@ -64,13 +64,22 @@ chmod +x build.sh
 
 2.  **Install/Upgrade**:
 
+    We recommend using the included `deploy.sh` script which handles timeouts and atomic rollbacks automatically:
+
+    ```bash
+    chmod +x deploy.sh
+    ./deploy.sh
+    ```
+
+    Or manually:
+
     ```bash
     helm upgrade --install speech-ui . \
       --namespace voice-agent \
       --create-namespace \
       --atomic \
       --wait \
-      --timeout 10m
+      --timeout 15m
     ```
 
 3.  **Access the UI**:
