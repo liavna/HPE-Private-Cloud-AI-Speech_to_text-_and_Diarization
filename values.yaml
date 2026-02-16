@@ -1,0 +1,45 @@
+# Default values for speech-ui.
+
+image:
+  repository: liavna/speech-ui
+  pullPolicy: Always
+  tag: "latest"
+
+replicaCount: 1
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8501
+
+resources:
+  limits:
+    cpu: 1000m
+    memory: 2Gi
+  requests:
+    cpu: 250m
+    memory: 512Mi
+
+# Liveness and Readiness Probes
+probes:
+  liveness:
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    failureThreshold: 10
+  readiness:
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    failureThreshold: 10
+
+# Ezua specific configuration for Istio VirtualService
+ezua:
+  enabled: true
+  gateway: "istio-system/ezaf-gateway"
+  prefix: "/speech-ui"
+  host: "*"
+
+# Optional configuration for the Whisper service URL
+env:
+  WHISPER_BASE_URL: "http://whisper-service:8000/v1"
+  WHISPER_API_KEY: "dummy-key"
+  WHISPER_MODEL: "whisper-1"
